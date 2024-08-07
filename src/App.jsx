@@ -7,31 +7,31 @@ import DocPage from "./Pages/SubMainpage/DocPage";
 
 const App = () => {
   // The Routes of Different Page/Section
-  const routes = createBrowserRouter([
+  const router = createBrowserRouter([
     {
-      path: "",
+      path: "/",
       element: <MainPage />,
       children: [
         {
-          path: "",
+          path: "/",
           element: <HomePage />,
         },
         {
-          path: "List",
+          path: "/List",
           element: <ListPage />,
         },
         {
-          path: "Result",
+          path: "/Result",
           element: <ResultPage />,
         },
         {
-          path: "Doc",
+          path: "/Doc",
           element: <DocPage />,
         },
       ],
     },
   ]);
-  return <RouterProvider router={routes} />;
+  return <RouterProvider router={router} />;
 };
 
 export default App;
