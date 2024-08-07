@@ -19,8 +19,7 @@ MalwareScanner is a web application that allows users to scan URLs for potential
 
 ## Prerequisites
 
-- Node.js (version X.X.X or higher)
-- npm (version X.X.X or higher)
+- npm
 - Firebase account
 - VirusTotal API key
 

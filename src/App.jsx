@@ -1,8 +1,16 @@
-// import React from 'react'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import MainPage from './Pages/MainPage'
 
 const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: "",
+      element: <MainPage/>,
+      children : []
+    }
+  ])
   return (
-    <div>App</div>
+    <RouterProvider router={routes} />
   )
 }
 
