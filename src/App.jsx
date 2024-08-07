@@ -18,6 +18,14 @@ const App = () => {
           path: "List",
           element: <BlackPage />,
         },
+        {
+          path: "Result",
+          element: <BlackPage />,
+        },
+        {
+          path: "Doc",
+          element: <BlackPage />,
+        },
       ],
     },
   ]);
