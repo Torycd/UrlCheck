@@ -1,29 +1,27 @@
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import MainPage from './Pages/MainPage'
-import HomePage from './Pages/SubMainpage/HomePage'
-import BlackPage from './Pages/SubMainpage/BlackPage'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainPage from "./Pages/MainPage";
+import HomePage from "./Pages/SubMainpage/HomePage";
+import BlackPage from "./Pages/SubMainpage/BlackPage";
 
 const App = () => {
   // The Routes of Different Page/Section
   const routes = createBrowserRouter([
     {
       path: "",
-      element: <MainPage/>,
-      children : [
+      element: <MainPage />,
+      children: [
         {
           path: "Home",
-          element: <HomePage/>,
+          element: <HomePage />,
         },
         {
           path: "BlackList",
-          element: <BlackPage/>,
+          element: <BlackPage />,
         },
-      ]
-    }
-  ])
-  return (
-    <RouterProvider router={routes} />
-  )
-}
+      ],
+    },
+  ]);
+  return <RouterProvider router={routes} />;
+};
 
-export default App
+export default App;
