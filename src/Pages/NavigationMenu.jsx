@@ -7,7 +7,7 @@ const NavigationMenu = () => {
         <div className="p-4 ">
           <h2 className="text-blue-600 font-bold">MalwareScanner</h2>
         </div>
-        <ul className="flex h-full">
+        <ul className="flex h-full items-center space-x-4">
           <NavLink
             
             className={
@@ -18,7 +18,7 @@ const NavigationMenu = () => {
             to=""
             end
           >
-            <li>HomePage</li>
+            <li className="h-full">HomePage</li>
           </NavLink>
           <NavLink to="Home">
             <li>BlackList</li>
