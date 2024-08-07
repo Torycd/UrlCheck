@@ -1,7 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainPage from "./Pages/MainPage";
 import HomePage from "./Pages/SubMainpage/HomePage";
-import BlackPage from "./Pages/SubMainpage/BlackPage";
+import ListPage from "./Pages/SubMainpage/ListPage";
+import ResultPage from "./Pages/SubMainpage/ResultPage";
+import DocPage from "./Pages/SubMainpage/DocPage";
 
 const App = () => {
   // The Routes of Different Page/Section
@@ -16,15 +18,15 @@ const App = () => {
         },
         {
           path: "List",
-          element: <BlackPage />,
+          element: <ListPage />,
         },
         {
           path: "Result",
-          element: <BlackPage />,
+          element: <ResultPage />,
         },
         {
           path: "Doc",
-          element: <BlackPage />,
+          element: <DocPage />,
         },
       ],
     },
