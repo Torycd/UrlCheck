@@ -11,11 +11,11 @@ const App = () => {
       element: <MainPage />,
       children: [
         {
-          path: "Home",
+          path: "",
           element: <HomePage />,
         },
         {
-          path: "BlackList",
+          path: "List",
           element: <BlackPage />,
         },
       ],
