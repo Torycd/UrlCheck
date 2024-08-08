@@ -1,9 +1,11 @@
+// import React from "react";
+
 const HomePage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const url = formData.get("url");
-
+    // Changing the url 
     const encodedUrl = btoa(url).replace(/=/g, "");
     // Method for getting APIs in Vite project
     const apiKey = import.meta.env.VITE_API_KEY;
@@ -12,7 +14,7 @@ const HomePage = () => {
       const response = await fetch(
         `https://www.virustotal.com/api/v3/urls/${encodedUrl}`,
         {
-          method: "GET",
+          // method: "GET",
           headers: {
             "Content-Type": "application/json",
             "X-Apikey": apiKey,
@@ -26,6 +28,7 @@ const HomePage = () => {
 
       const data = await response.json();
       console.log(data);
+      event.target.reset();
     } catch (error) {
       console.error("Error:", error);
     }
