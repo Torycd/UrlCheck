@@ -1,6 +1,26 @@
-// import React from 'react'
+
 
 const HomePage = () => {
+
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    
+    try {
+      const response = await fetch(`https://www.virustotal.com/api/v3/urls/${url}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+      const data = await response.json()
+      console.log(data)
+    } catch (error){
+      console.error("Error:", error);
+    }
+    
+  }
   return (
     <div className="text-black mx-20 text-xl">
       <div className="grid grid-cols-2 gap-8 pt-10">
@@ -14,7 +34,7 @@ const HomePage = () => {
               className="bg-gray-300 px-4 py-3 rounded-md"
               placeholder="https://example.com"
             />
-            <button className="bg-blue-400 rounded-md h-full px-6 py-2 text-white">Submit</button>
+            <button onSubmit={handleSubmit} className="bg-blue-400 rounded-md h-full px-6 py-2 text-white">Submit</button>
           </form>
         </div>
         <div className="p-2">
