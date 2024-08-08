@@ -3,7 +3,7 @@ import Analysis from "../../components/Analysis";
 
 const HomePage = () => {
   const [dataAvailability, setDataAvailability] = useState(false);
-  const [analysis, setAnalysis] = useState(null); // Initial state is null
+  const [analysis, setAnalysis] = useState({}); // Initial state is null
 
   const handleSubmit = async (event) => {
     event.preventDefault();

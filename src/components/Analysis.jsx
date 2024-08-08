@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Analysis = ({ analysis }) => {
     if (!analysis || !analysis.attributes) {
       return <p>No analysis data available</p>;
@@ -19,4 +21,8 @@ const Analysis = ({ analysis }) => {
   };
   
   export default Analysis;
+
+  Analysis.propTypes = {
+    analysis: PropTypes.object,
+  }
   
