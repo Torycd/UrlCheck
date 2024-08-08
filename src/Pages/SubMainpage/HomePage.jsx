@@ -1,20 +1,21 @@
-// import React from "react";
+import { useState } from "react";
+import Analysis from "../../components/Analysis";
 
 const HomePage = () => {
+  const [dataAvailability, setDataAvailability] = useState(false);
+  const [analysis, setAnalysis] = useState(null); // Initial state is null
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const url = formData.get("url");
-    // Changing the url 
     const encodedUrl = btoa(url).replace(/=/g, "");
-    // Method for getting APIs in Vite project
     const apiKey = import.meta.env.VITE_API_KEY;
 
     try {
       const response = await fetch(
         `https://www.virustotal.com/api/v3/urls/${encodedUrl}`,
         {
-          // method: "GET",
           headers: {
             "Content-Type": "application/json",
             "X-Apikey": apiKey,
@@ -27,12 +28,17 @@ const HomePage = () => {
       }
 
       const data = await response.json();
+      if (data) {
+        setDataAvailability(true);
+        setAnalysis(data.data); // Assuming 'data.data' contains the needed information
+      }
       console.log(data);
       event.target.reset();
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
   return (
     <div className="text-black mx-20 text-xl">
       <div className="grid grid-cols-2 gap-8 pt-10">
@@ -54,9 +60,16 @@ const HomePage = () => {
               Submit
             </button>
           </form>
+          <p className="opacity-50">
+            Note: URLs will be accessible and maybe shared with our Partner
+          </p>
         </div>
         <div className="p-2">
-          <h2 className="font-semibold text-3xl">No data yet</h2>
+          {dataAvailability ? (
+            <Analysis analysis={analysis} />
+          ) : (
+            <h2 className="font-semibold text-3xl">No data yet</h2>
+          )}
         </div>
       </div>
     </div>
