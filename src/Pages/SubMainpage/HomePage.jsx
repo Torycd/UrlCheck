@@ -3,10 +3,11 @@ import Analysis from "../../components/Analysis";
 
 const HomePage = () => {
   const [dataAvailability, setDataAvailability] = useState(false);
-  const [analysis, setAnalysis] = useState({}); // Initial state is null
+  const [analysis, setAnalysis] = useState({}); // Initial state is an empty object
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // to get the input of the user and covert to url
     const formData = new FormData(event.target);
     const url = formData.get("url");
     const encodedUrl = btoa(url).replace(/=/g, "");

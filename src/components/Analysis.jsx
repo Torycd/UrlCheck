@@ -4,6 +4,7 @@ const Analysis = ({ analysis }) => {
   if (!analysis || !analysis.attributes) {
     return <p>No analysis data available</p>;
   }
+//   add last_analysis report
   return (
     <div>
       <p>Tittle: {analysis.attributes.title}</p>
