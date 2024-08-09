@@ -24,11 +24,11 @@ const Analysis = ({ analysis }) => {
   ).toFixed(0);
 
   return (
-    <div className="bg-gray-100 p-5 rounded-lg">
+    <div className="bg-gray-100 p-5 rounded-lg border-4">
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">{analysis.attributes.title}</h2>
         <div className="grid grid-cols-2 gap-3">
-          <div style={{ width: "100%", height: 200 }}>
+          <div className="border-4" style={{ width: "100%", height: 200 }}>
             <ResponsiveContainer>
               <PieChart>
                 <Pie
@@ -58,34 +58,25 @@ const Analysis = ({ analysis }) => {
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div>
-            <p>
-              <strong>Reputation:</strong> {analysis.attributes.reputation}
-            </p>
-            <p>
-              <strong>URL:</strong>{" "}
-              <a
-                href={analysis.attributes.url}
-                className="text-blue-600 underline"
-              >
-                {analysis.attributes.url}
-              </a>
-            </p>
-            <p>
-              <strong>Times Submitted:</strong>{" "}
-              {analysis.attributes["times_submitted"]}
-            </p>
-            <p>
+          <div className="border-4">
+            <div className="h-full flex flex-col items-center justify-center space-y-3">
+              <h2 className="font-bold text-4xl">Votes</h2>
+              <div className="grid grid-cols-2 italic font-bold text-center gap-5">
+                <p>harmless</p>
+                <p>Malicious</p>
+              </div>
+              <div className="grid grid-cols-2 text-4xl text-center gap-5">
+                <p className="text-[#0000FF] font-bold">
+                  {analysis.attributes["total_votes"].harmless}
+                </p>
+                <p className="text-[#FF0000] font-bold">
+                  {analysis.attributes["total_votes"].malicious}
+                </p>
+              </div>
+            </div>
+            {/* <p>
               <strong>Type:</strong> {analysis.attributes.type}
-            </p>
-            <p>
-              <strong>Harmless:</strong>{" "}
-              {analysis.attributes["total_votes"].harmless}
-            </p>
-            <p>
-              <strong>Malicious:</strong>{" "}
-              {analysis.attributes["total_votes"].malicious}
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
