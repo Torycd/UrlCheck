@@ -10,7 +10,34 @@ const MainAnalysis = ({ analysis, time }) => {
   const test =
     analysis.attributes["last_analysis_stats"].harmless >
     analysis.attributes["last_analysis_stats"].malicious;
+  const selectedEngines = [
+    "Blueliv",
+    "Kaspersky",
+    "PhishingDataBase",
+    "MalwareURL",
+    "Acronis",
+  ];
 
+  const filteredResults = Object.entries(
+    analysis.attributes["last_analysis_results"]
+  )
+    .filter(([key]) => selectedEngines.includes(key))
+    .map(([key, det]) => (
+      <div key={key} className="border-b border-gray-200 py-2">
+        <p>
+          <strong>Engine Name:</strong> {det.engine_name}
+        </p>
+        <p>
+          <strong>Category:</strong> {det.category}
+        </p>
+        <p>
+          <strong>Method:</strong> {det.method}
+        </p>
+        <p>
+          <strong>Result:</strong> {det.result}
+        </p>
+      </div>
+    ));
   return (
     <div>
       <div className="grid grid-cols-2">
@@ -59,6 +86,14 @@ const MainAnalysis = ({ analysis, time }) => {
           </div>
         </div>
         <div></div>
+      </div>
+      <br />
+      <div>
+        {filteredResults.length > 0 ? (
+          filteredResults
+        ) : (
+          <p>No selected engine results available.</p>
+        )}
       </div>
     </div>
   );
