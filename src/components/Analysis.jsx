@@ -25,6 +25,7 @@ const Analysis = ({ analysis }) => {
 
   return (
     <div>
+
       <div style={{ width: "100%", height: 200 }}>
         <ResponsiveContainer>
           <PieChart>
@@ -48,7 +49,7 @@ const Analysis = ({ analysis }) => {
                 value={`${harmlessPercentage}%`}
                 position="center"
                 fill="#0000FF" // Color for the harmless label
-                fontSize={24}
+                fontSize={44}
                 fontWeight="bold"
               />
             </Pie>
@@ -57,6 +58,7 @@ const Analysis = ({ analysis }) => {
       </div>
 
       {/* Display additional analysis information */}
+
       <p>Title: {analysis.attributes.title}</p>
       <p>Reputation: {analysis.attributes.reputation}</p>
       <p>URL: {analysis.attributes.url}</p>
