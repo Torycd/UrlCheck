@@ -88,7 +88,7 @@ const MainAnalysis = ({ analysis, time }) => {
       <div>
         {filteredResults.length > 0 ? (
           <>
-            <div className="border-4 border-gray-200 grid grid-cols-4 gap-2 font-bold opacity-80 mt-2">
+            <div className="border-4 border-gray-200 grid grid-cols-4 gap-2 font-bold opacity-80 mb-3">
               <p className="p-2 text-center m-2">Engine_Name</p>
               <p className="p-2 text-center m-2">Category</p>
               <p className="p-2 text-center m-2">Method</p>
