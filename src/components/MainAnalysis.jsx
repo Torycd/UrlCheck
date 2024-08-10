@@ -16,7 +16,12 @@ const MainAnalysis = ({ analysis, time }) => {
     "PhishingDataBase",
     "MalwareURL",
     "Acronis",
+    "CSIS Security Group",
+    "OpenPhish",
+    "Phishtank",
+    "AlienVault",
   ];
+  const pStyle = "p-2 text-center m-2";
   // this is too make a filter on the
   const filteredResults = Object.entries(
     analysis.attributes["last_analysis_results"]
@@ -27,12 +32,12 @@ const MainAnalysis = ({ analysis, time }) => {
         key={key}
         className="border-b border-gray-200 grid grid-cols-4 gap-2 font-semibold opacity-80"
       >
-        <p className="p-2 text-center m-2">{det.engine_name}</p>
-        <p className="bg-gray-100 m-2 p-2 text-center font-bold rounded-md">
+        <p className={pStyle}>{det.engine_name}</p>
+        <p className={`"bg-gray-100font-bold rounded-md"  ${pStyle} `}>
           {det.category}
         </p>
-        <p className="p-2 text-center m-2">{det.method}</p>
-        <p className="p-2 text-center m-2">{det.result}</p>
+        <p className={pStyle}>{det.method}</p>
+        <p className={pStyle}>{det.result}</p>
       </div>
     ));
   return (
@@ -88,13 +93,13 @@ const MainAnalysis = ({ analysis, time }) => {
       <div>
         {filteredResults.length > 0 ? (
           <>
-            <div className="border-4 border-gray-200 grid grid-cols-4 gap-2 font-bold opacity-80 mb-3">
-              <p className="p-2 text-center m-2">Engine_Name</p>
-              <p className="p-2 text-center m-2">Category</p>
-              <p className="p-2 text-center m-2">Method</p>
-              <p className="p-2 text-center m-2">Result</p>
+            <div className="border-2 border-gray-200 grid grid-cols-4 gap-2 font-bold opacity-80 mb-2">
+              <p className={pStyle}>Engine_Name</p>
+              <p className={pStyle}>Category</p>
+              <p className={pStyle}>Method</p>
+              <p className={pStyle}>Result</p>
             </div>
-            <div className="border-4 px-4 py-2 rounded-lg">
+            <div className="border-2 px-4 py-2 rounded-lg">
               {filteredResults}
             </div>
           </>

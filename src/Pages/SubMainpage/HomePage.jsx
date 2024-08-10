@@ -5,7 +5,7 @@ import MainAnalysis from "../../components/MainAnalysis";
 const HomePage = () => {
   const [dataAvailability, setDataAvailability] = useState(false);
   const [analysis, setAnalysis] = useState({}); // Initial state is an empty object
-  const [timeSearched, setTimeSearched] = useState("")
+  const [timeSearched, setTimeSearched] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -15,7 +15,7 @@ const HomePage = () => {
     const encodedUrl = btoa(url).replace(/=/g, "");
     // to get the API Key from .env
     const apiKey = import.meta.env.VITE_API_KEY;
-    
+
     try {
       const response = await fetch(
         `https://www.virustotal.com/api/v3/urls/${encodedUrl}`,
@@ -35,14 +35,13 @@ const HomePage = () => {
       if (data) {
         setDataAvailability(true);
         setAnalysis(data.data); // data.data' contains the needed information
-        setTimeSearched(new Date().toISOString())
+        setTimeSearched(new Date().toISOString());
       }
       console.log(data);
       event.target.reset();
     } catch (error) {
       console.error("Error:", error);
     }
-    
   };
 
   return (
@@ -64,7 +63,7 @@ const HomePage = () => {
                 type="submit"
                 className="bg-blue-400 rounded-md h-full px-6 py-2 text-white"
               >
-                Submit
+                Scan
               </button>
             </div>
           </form>
@@ -80,7 +79,11 @@ const HomePage = () => {
           )}
         </div>
       </div>
-      {dataAvailability ? <MainAnalysis time={timeSearched} analysis={analysis} /> : ""}
+      {dataAvailability ? (
+        <MainAnalysis time={timeSearched} analysis={analysis} />
+      ) : (
+        ""
+      )}
     </div>
   );
 };
