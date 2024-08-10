@@ -17,25 +17,17 @@ const MainAnalysis = ({ analysis, time }) => {
     "MalwareURL",
     "Acronis",
   ];
-
+  // this is too make a filter on the
   const filteredResults = Object.entries(
     analysis.attributes["last_analysis_results"]
   )
     .filter(([key]) => selectedEngines.includes(key))
     .map(([key, det]) => (
-      <div key={key} className="border-b border-gray-200 py-2">
-        <p>
-          <strong>Engine Name:</strong> {det.engine_name}
-        </p>
-        <p>
-          <strong>Category:</strong> {det.category}
-        </p>
-        <p>
-          <strong>Method:</strong> {det.method}
-        </p>
-        <p>
-          <strong>Result:</strong> {det.result}
-        </p>
+      <div key={key} className="border-b border-gray-200 grid grid-cols-4 gap-2 font-semibold opacity-80">
+        <p className="p-2 text-center m-2">{det.engine_name}</p>
+        <p className="bg-gray-100 m-2 p-2 text-center font-bold rounded-md">{det.category}</p>
+        <p className="p-2 text-center m-2">{det.method}</p>
+        <p className="p-2 text-center m-2">{det.result}</p>
       </div>
     ));
   return (
@@ -90,7 +82,7 @@ const MainAnalysis = ({ analysis, time }) => {
       <br />
       <div>
         {filteredResults.length > 0 ? (
-          filteredResults
+          <div className="border-4 px-4 py-2 rounded-lg">{filteredResults}</div>
         ) : (
           <p>No selected engine results available.</p>
         )}
