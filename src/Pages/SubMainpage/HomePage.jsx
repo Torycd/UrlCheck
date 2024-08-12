@@ -18,7 +18,7 @@ const HomePage = () => {
 
     try {
       const response = await fetch(
-        `https://www.virustotal.com/api/v3/urls/${encodedUrl}`,
+        `/api/urls/${encodedUrl}`,
         {
           headers: {
             "Content-Type": "application/json",
