@@ -4,11 +4,11 @@ const Footer = () => {
   return (
     <div className="bg-blue-500 text-white flex justify-between">
         {/* Section wha */}
-        <div></div>
+        <div>HELLO</div>
         {/* Section wha */}
-        <div></div>
+        <div>WHAt</div>
         {/* Section wha */}
-        <div></div>
+        <div>DO</div>
     </div>
   )
 }
