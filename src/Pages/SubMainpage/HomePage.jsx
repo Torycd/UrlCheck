@@ -14,15 +14,12 @@ const HomePage = () => {
     const url = formData.get("url");
     const encodedUrl = btoa(url).replace(/=/g, "");
 
-    const apiBaseUrl =
-      import.meta.env.MODE === "development"
-        ? "/api" // Proxy path during development
-        : "https://www.virustotal.com/api/v3";
-    // to get the API Key from .env
+    const apiBaseUrl = "https://www.virustotal.com/api/v3";
+    const corsProxy = "https://cors-anywhere.herokuapp.com/";
     const apiKey = import.meta.env.VITE_API_KEY;
 
     try {
-      const response = await fetch(`${apiBaseUrl}/urls/${encodedUrl}`, {
+      const response = await fetch(`${corsProxy}${apiBaseUrl}/urls/${encodedUrl}`, {
         headers: {
           accept: "application/json",
           "X-Apikey": apiKey,
