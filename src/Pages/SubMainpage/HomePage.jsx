@@ -22,6 +22,7 @@ const HomePage = () => {
         {
           headers: {
             "Content-Type": "application/json",
+            mode: "cors",
             "X-Apikey": apiKey,
           },
         }
