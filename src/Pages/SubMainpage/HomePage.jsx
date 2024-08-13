@@ -13,7 +13,8 @@ const HomePage = () => {
     const formData = new FormData(event.target);
     const url = formData.get("url");
     const encodedUrl = btoa(url).replace(/=/g, "");
-    const apiKey = import.meta.env.VITE_API_KEY;
+    // const apiKey = import.meta.env.VITE_API_KEY;
+    const apiKey ="daf6febd45ec16dce5aa98f60d9bc7c06067dd02e0201e283fe638dd21748585"
 
     try {
       const response = await fetch(`https://www.virustotal.com/api/v3/urls/${encodedUrl}`, {
