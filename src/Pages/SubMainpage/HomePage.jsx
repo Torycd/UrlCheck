@@ -25,8 +25,8 @@ const HomePage = () => {
         `${apiBaseUrl}/urls/${encodedUrl}`,
         {
           headers: {
-            "Content-Type": "application/json",
-            mode: "no-cors",
+            // "Content-Type": "application/json",
+            // mode: "no-cors",
             "X-Apikey": apiKey,
           },
         }
