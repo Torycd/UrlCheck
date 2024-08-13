@@ -15,14 +15,14 @@ const HomePage = () => {
     const encodedUrl = btoa(url).replace(/=/g, "");
 
     const apiBaseUrl = "https://www.virustotal.com/api/v3";
-    const corsProxy = "https://cors-anywhere.herokuapp.com/";
     const apiKey = import.meta.env.VITE_API_KEY;
 
     try {
-      const response = await fetch(`${corsProxy}${apiBaseUrl}/urls/${encodedUrl}`, {
+      const response = await fetch(`${apiBaseUrl}/urls/${encodedUrl}`, {
+        method: "GET",
         headers: {
           accept: "application/json",
-          "X-Apikey": apiKey,
+          "x-apikey": apiKey,
         },
       });
 
