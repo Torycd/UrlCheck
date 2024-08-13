@@ -13,17 +13,15 @@ const HomePage = () => {
     const formData = new FormData(event.target);
     const url = formData.get("url");
     const encodedUrl = btoa(url).replace(/=/g, "");
-
-    const apiBaseUrl = "https://www.virustotal.com/api/v3";
     const apiKey = import.meta.env.VITE_API_KEY;
 
     try {
-      const response = await fetch(`${apiBaseUrl}/urls/${encodedUrl}`, {
-        method: "GET",
+      const response = await fetch(`https://www.virustotal.com/api/v3/urls/${encodedUrl}`, {
+        method: 'GET',
         headers: {
-          accept: "application/json",
-          "x-apikey": apiKey,
-        },
+          'accept': 'application/json',
+          'x-apikey': apiKey
+        }
       });
 
       if (!response.ok) {
