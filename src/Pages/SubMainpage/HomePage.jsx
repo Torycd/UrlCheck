@@ -13,17 +13,26 @@ const HomePage = () => {
     const formData = new FormData(event.target);
     const url = formData.get("url");
     const encodedUrl = btoa(url).replace(/=/g, "");
-    // const apiKey = import.meta.env.VITE_API_KEY;
-    const apiKey ="daf6febd45ec16dce5aa98f60d9bc7c06067dd02e0201e283fe638dd21748585"
+    const apiKey = import.meta.env.VITE_API_KEY;
+    // const apiKey ="daf6febd45ec16dce5aa98f60d9bc7c06067dd02e0201e283fe638dd21748585"
+    console.log("API Key:", apiKey);
+    if (!apiKey) {
+      console.error("API key is missing");
+      alert("API key is not set. Please check your environment variables.");
+      return;
+    }
 
     try {
-      const response = await fetch(`https://www.virustotal.com/api/v3/urls/${encodedUrl}`, {
-        method: 'GET',
-        headers: {
-          'accept': 'application/json',
-          'x-apikey': apiKey
+      const response = await fetch(
+        `https://www.virustotal.com/api/v3/urls/${encodedUrl}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            "x-apikey": apiKey,
+          },
         }
-      });
+      );
 
       if (!response.ok) {
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
