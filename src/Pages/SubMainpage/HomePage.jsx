@@ -9,46 +9,45 @@ const HomePage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // to get the input of the user and covert to url
     const formData = new FormData(event.target);
     const url = formData.get("url");
     const encodedUrl = btoa(url).replace(/=/g, "");
-  
-    const apiBaseUrl = "https://www.virustotal.com/api/v3";
-    const corsProxyUrl = "https://cors-anywhere.herokuapp.com/";
     const apiKey = import.meta.env.VITE_API_KEY;
-  
+ 
+    // console.log("API Key:", apiKey);
     if (!apiKey) {
       console.error("API key is missing");
       alert("API key is not set. Please check your environment variables.");
       return;
     }
-  
+
     try {
-      const response = await fetch(`${corsProxyUrl}${apiBaseUrl}/urls/${encodedUrl}`, {
-        method: 'GET',
-        headers: {
-          'accept': 'application/json',
-          'x-apikey': apiKey
+      const response = await fetch(
+        `https://www.virustotal.com/api/v3/urls/${encodedUrl}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            "x-apikey": apiKey,
+          },
         }
-      });
-  
+      );
+
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error(`API Response: ${errorText}`);
-        throw new Error(`Error ${response.status}: ${errorText}`);
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }
-  
+
       const data = await response.json();
       if (data) {
         setDataAvailability(true);
-        setAnalysis(data.data);
+        setAnalysis(data.data); // data.data' contains the needed information
         setTimeSearched(new Date().toISOString());
       }
       console.log(data);
       event.target.reset();
     } catch (error) {
       console.error("Error:", error);
-      alert(`An error occurred: ${error.message}`);
     }
   };
 
