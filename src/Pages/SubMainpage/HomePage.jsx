@@ -15,7 +15,7 @@ const HomePage = () => {
     const encodedUrl = btoa(url).replace(/=/g, "");
     const apiKey = import.meta.env.VITE_API_KEY;
  
-    // console.log("API Key:", apiKey);
+    console.log("API Key:", apiKey);
     if (!apiKey) {
       console.error("API key is missing");
       alert("API key is not set. Please check your environment variables.");
@@ -30,12 +30,6 @@ const HomePage = () => {
           
           headers: {
             accept: "application/json",
-            referer: "https://malwarescanner.netlify.app/",
-            "sec-ch-ua": '"Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"',
-            "sec-ch-ua-mobile": "?1",
-            "sec-ch-ua-platform": '"Android"',
-            "user-agent":
-              "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Mobile Safari/537.36",
             "x-apikey": apiKey,
           },
         }
